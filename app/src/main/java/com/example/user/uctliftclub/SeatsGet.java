@@ -22,7 +22,7 @@ public class SeatsGet extends Activity {
         but1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent leaving = new Intent(SeatsGet.this, MainActivity.class);
+                Intent leaving = new Intent(SeatsGet.this, ResultsGet.class);
                 startActivity(leaving);
             }
         });

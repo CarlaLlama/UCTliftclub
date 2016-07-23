@@ -45,6 +45,14 @@
             android:name=".SeatsGet"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name=".ResultsGet"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".ConfirmRideGet"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>
