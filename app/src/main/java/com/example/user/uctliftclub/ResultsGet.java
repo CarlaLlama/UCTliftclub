@@ -1,3 +1,5 @@
+package com.example.user.uctliftclub;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -5,8 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.user.uctliftclub.MainActivity;
-import com.example.user.uctliftclub.R;
 import com.firebase.client.Firebase;
 
 /**
