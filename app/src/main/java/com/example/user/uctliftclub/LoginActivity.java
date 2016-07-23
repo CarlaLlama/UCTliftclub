@@ -1,5 +1,13 @@
 package com.example.user.uctliftclub;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class LoginActivity {
     Firebase myFirebaseRef; //Link to Firebase online database - used as place to send and receive messages from
 

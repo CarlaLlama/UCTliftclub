@@ -17,7 +17,7 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
-    ChatManager chatManager;
+    LoginActivity chatManager;
     EditText messageBox;
     Button submitButton;
     protected static TextView messageDisplay;
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Method to send Messages based off what is written the text box
     private void sendMessage(){
-        //NB -- "CarlyCatzSnooze" is temp holder name - user needs to choose what username he wants
+        //NB -- "User" is temp holder name - user needs to choose what username he wants
         //Get text from the message box and send to the chat manager to sort out
         chatManager.sendMessage("User", messageBox.getText().toString());
         messageBox.setText(""); // Reset Text box to null
