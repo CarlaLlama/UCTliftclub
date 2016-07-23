@@ -9,7 +9,7 @@ import android.widget.Button;
 /**
  * Created by user on 7/23/2016.
  */
-public class COnfirmGive extends Activity {
+public class ConfirmGive extends Activity {
 
     public Button but1;
 
@@ -18,7 +18,7 @@ public class COnfirmGive extends Activity {
         but1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent doneall = new Intent(COnfirmGive.this, MainActivity.class);
+                Intent doneall = new Intent(ConfirmGive.this, MainActivity.class);
                 startActivity(doneall);
             }
         });

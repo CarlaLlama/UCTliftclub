@@ -53,7 +53,7 @@
             android:layout_gravity="center_horizontal|top"
             android:textColor="#ffffff"
             android:typeface="monospace"
-            android:textSize="45dp" />
+            android:textSize="40dp" />
 
     </FrameLayout>
 
