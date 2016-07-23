@@ -24,25 +24,41 @@ public class MainActivity extends Activity {
     Button submitButton;
     protected static TextView messageDisplay;
 
+    public Button login;
+    public Button newuser;
+
+    public void gotoLogin(){
+        login = (Button)findViewById(R.id.button);
+        login.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent loggingin = new Intent(MainActivity.this, LoginActivity.class);
+            }
+        });
+    }
+
+    public void gotoCreateUser(){
+        newuser = (Button)findViewById(R.id.button);
+        newuser.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent createuser = new Intent(MainActivity.this, NewUserActivity.class);
+            }
+        });
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Firebase.setAndroidContext(this);
 
-        //Gets element objects from the layout
-        messageDisplay = (TextView)findViewById(R.id.messageDisplay);
-        messageBox   = (EditText)findViewById(R.id.editText); //Text box for entering messages
-        submitButton = (Button)findViewById(R.id.submitButton); //Button to send messages
-        submitButton.setOnClickListener(
-                new View.OnClickListener() {
-                    public void onClick(View view) {
-                        sendMessage(); //When submit button clicked then launch sendMessage method
-
-                    }
-                });
-        //Initialise Chat Manager with the reference to the database
+        //Initialise login page
         loginManager = new LoginActivity("https://uctliftclub.firebaseio.com/");
+        gotoLogin();
+        gotoCreateUser();
+
     }
 
 
