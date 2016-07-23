@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:background="#010101"
+    android:background="#dc000005"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -10,36 +10,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Password"
+        android:text="Password:"
         android:id="@+id/textView"
         android:layout_gravity="center_vertical"
-        android:layout_alignParentBottom="true"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/editText2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="119dp"
-        android:textColor="#ffffff" />
+        android:padding="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Student Number"
+        android:text="Student Number:"
         android:id="@+id/textView2"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:padding="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="LOGIN"
+        android:text="Login:"
         android:id="@+id/textView3"
+        android:textColor="#ffffff"
+        android:textSize="45dp"
         android:layout_above="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="77dp"
-        android:textColor="#ffffff" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingBottom="20dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -54,7 +57,8 @@
         android:visibility="visible"
         android:layout_alignRight="@+id/textView2"
         android:layout_alignEnd="@+id/textView2"
-        android:background="#040a51" />
+        android:background="#FFFFFF"
+        android:textSize="30dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -62,13 +66,25 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/editText3"
-        android:layout_alignTop="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="40dp"
-        android:background="#040a51"
+        android:background="#FFFFFF"
         android:autoText="true"
         android:visibility="visible"
-        android:editable="true" />
+        android:editable="true"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOGIN"
+        android:id="@+id/button5"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
