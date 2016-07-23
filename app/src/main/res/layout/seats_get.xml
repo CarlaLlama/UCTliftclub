@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#dc000005">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="How many seats do you need?"
+        android:id="@+id/textView14"
+        android:textColor="#D5D5D5"
+        android:textSize="50dp"
+        android:textAlignment="center"
+        android:padding="20dp"
+        android:includeFontPadding="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText10"
+        android:background="#FFFFFF"
+        android:textSize="40dp"
+        android:padding="5dp"
+        android:phoneNumber="true"
+        android:scrollIndicators="top"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/button8"
+        android:layout_alignStart="@+id/button8"
+        android:layout_alignRight="@+id/button8"
+        android:layout_alignEnd="@+id/button8" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:id="@+id/button8"
+        android:textColor="#D5d5d5"
+        android:textSize="30dp"
+        android:layout_marginTop="50dp"
+        android:padding="20dp"
+        android:layout_below="@+id/editText10"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
