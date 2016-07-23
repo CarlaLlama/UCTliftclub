@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#dc000005"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Here are the rides available after your chosen leaving time. Click a ride to select:"
+        android:id="@+id/textView9"
+        android:layout_gravity="center_horizontal"
+        android:textSize="30dp"
+        android:textColor="#d5d5d5"
+        android:textAlignment="center"
+        android:padding="10dp" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="304dp"
+        android:id="@+id/listView"
+        android:layout_weight="0.1"
+        android:theme="@android:style/Theme.DeviceDefault.Light"
+        android:background="#d5d5d5" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FILTER RESULTS"
+        android:id="@+id/button6"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#d5d5d5" />
+</LinearLayout>
