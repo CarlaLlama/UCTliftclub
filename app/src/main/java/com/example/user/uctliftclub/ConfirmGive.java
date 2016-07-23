@@ -9,17 +9,17 @@ import android.widget.Button;
 /**
  * Created by user on 7/23/2016.
  */
-public class PassengerGive extends Activity {
+public class COnfirmGive extends Activity {
 
     public Button but1;
 
-    public void howmany(){
-        but1 = (Button)findViewById(R.id.button12);
+    public void done(){
+        but1 = (Button)findViewById(R.id.button14);
         but1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent howmuch = new Intent(PassengerGive.this, Stop.class);
-                startActivity(howmuch);
+                Intent doneall = new Intent(COnfirmGive.this, MainActivity.class);
+                startActivity(doneall);
             }
         });
     }
@@ -27,8 +27,8 @@ public class PassengerGive extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.passenger_give);
-        howmany();
+        setContentView(R.layout.confirm_give);
+        done();
     }
 
 }
