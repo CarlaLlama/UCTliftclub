@@ -40,7 +40,7 @@ public class NewUserActivity extends Activity {
                 EditText s = (EditText) findViewById(R.id.editText5);
                 String surname = (String) s.getText().toString();
                 EditText st = (EditText) findViewById(R.id.editText6);
-                String studentno = (String) st.getText().toString();
+                final String studentno = (String) st.getText().toString();
                 EditText pd = (EditText) findViewById(R.id.editText7);
                 String pw = (String) st.getText().toString();
                 EditText pc = (EditText) findViewById(R.id.editText8);
@@ -51,14 +51,16 @@ public class NewUserActivity extends Activity {
                         @Override
                         public void onSuccess(Map<String, Object> result) {
                             System.out.println("Successfully created user account with uid: " + result.get("uid"));
-                            Intent loggingin = new Intent(NewUserActivity.this, GiveOrGet.class);
+                            Intent loggingin = new Intent(getBaseContext(), GiveOrGet.class);
+                            loggingin.putExtra("USER_NAME", studentno);
                             startActivity(loggingin);
                         }
 
                         @Override
                         public void onError(FirebaseError firebaseError) {
-                            Intent loggingout = new Intent(NewUserActivity.this, NewUserActivity.class);
-                            startActivity(loggingout);
+                            Intent loggingin = new Intent(getBaseContext(), GiveOrGet.class);
+                            loggingin.putExtra("USER_NAME", studentno);
+                            startActivity(loggingin);
                         }
                     });
                 }

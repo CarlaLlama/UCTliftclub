@@ -24,7 +24,7 @@ public class LoginActivity extends Activity{
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
         setContentView(R.layout.activity_login);
-        ref = new Firebase("https://uctliftclub.firebaseio.com/Messages");
+        ref = new Firebase("https://uctliftclub.firebaseio.com");
         attemptLogin();
     }
         
@@ -36,22 +36,26 @@ public class LoginActivity extends Activity{
             @Override
             public void onClick(View v) {
                 EditText usr = (EditText) findViewById(R.id.editText2);
-                String username = (String) usr.getText().toString();
+                final String username = (String) usr.getText().toString();
                 EditText pwd = (EditText) findViewById(R.id.editText3);
-                String pword = (String) usr.getText().toString();
+                final String pword = (String) pwd.getText().toString();
                 ref.authWithPassword(username, pword, new Firebase.AuthResultHandler() {
+                    @Override
                     public void onAuthenticated(AuthData authData) {
                         System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
-                        Intent loggingin = new Intent(LoginActivity.this, GiveOrGet.class);
+                        Intent loggingin = new Intent(getBaseContext(), GiveOrGet.class);
+                        loggingin.putExtra("USER_NAME", username);
                         startActivity(loggingin);
                     }
-
+                    @Override
                     public void onAuthenticationError(FirebaseError firebaseError) {
                         System.out.println("SYSTEM BREACH! Successfully prevented");
-                        Intent loggingout = new Intent(LoginActivity.this, GiveOrGet.class);
+                        System.out.println("usr "+username+" pwsd "+pword);
+                        Intent loggingout = new Intent(getBaseContext(), GiveOrGet.class);
+                        loggingout.putExtra("USER_NAME", username);
                         startActivity(loggingout);
-                }
-            });
+                    }
+                });
             }
         });
     }
