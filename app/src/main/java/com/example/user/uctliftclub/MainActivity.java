@@ -1,7 +1,7 @@
 package com.example.user.uctliftclub;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,8 +16,8 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-public class MainActivity extends AppCompatActivity {
-    LoginActivity chatManager;
+public class MainActivity extends Activity {
+    LoginActivity loginManager;
     EditText messageBox;
     Button submitButton;
     protected static TextView messageDisplay;
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Firebase.setAndroidContext(this); //???
+        Firebase.setAndroidContext(this);
 
         //Gets element objects from the layout
         messageDisplay = (TextView)findViewById(R.id.messageDisplay);
@@ -40,14 +40,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         //Initialise Chat Manager with the reference to the database
-        chatManager = new LoginActivity("https://uctliftclub.firebaseio.com/Messages");
+        loginManager = new LoginActivity("https://uctliftclub.firebaseio.com/Users");
     }
 
     //Method to send Messages based off what is written the text box
     private void sendMessage(){
         //NB -- "User" is temp holder name - user needs to choose what username he wants
         //Get text from the message box and send to the chat manager to sort out
-        chatManager.sendMessage("User", messageBox.getText().toString());
+        loginManager.sendMessage("User", messageBox.getText().toString());
         messageBox.setText(""); // Reset Text box to null
     }
 
