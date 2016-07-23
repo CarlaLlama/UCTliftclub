@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.Button;
 
 /**
- * Created by user on 7/23/2016.
+ * Created by alexandra on 2016/07/23.
  */
-public class GivingALift extends Activity{
+public class GettingALift extends Activity{
 
     public Button but1;
 
@@ -18,7 +18,7 @@ public class GivingALift extends Activity{
         but1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent leaving = new Intent(GivingALift.this, MainActivity.class);
+                Intent leaving = new Intent(GettingALift.this, MainActivity.class);
                 startActivity(leaving);
             }
         });
@@ -31,5 +31,4 @@ public class GivingALift extends Activity{
         setContentView(R.layout.lift_leaving_time);
         setTime();
     }
-
 }
