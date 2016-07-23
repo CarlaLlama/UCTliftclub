@@ -16,6 +16,8 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+import java.util.Map;
+
 public class MainActivity extends Activity {
     LoginActivity loginManager;
     EditText messageBox;
@@ -40,8 +42,10 @@ public class MainActivity extends Activity {
                     }
                 });
         //Initialise Chat Manager with the reference to the database
-        loginManager = new LoginActivity("https://uctliftclub.firebaseio.com/Users");
+        loginManager = new LoginActivity("https://uctliftclub.firebaseio.com/");
     }
+
+
 
     //Method to send Messages based off what is written the text box
     private void sendMessage(){

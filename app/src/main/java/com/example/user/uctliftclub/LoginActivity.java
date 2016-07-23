@@ -1,5 +1,6 @@
 package com.example.user.uctliftclub;
 
+import com.firebase.client.AuthData;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -9,12 +10,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity {
-    Firebase myFirebaseRef; //Link to Firebase online database - used as place to send and receive messages from
+    Firebase myFirebaseRef; //Link to Firebase online database - used as place to store user data
 
     //Constructor to connect to database
     LoginActivity(String firebaseURL){
         myFirebaseRef = new Firebase(firebaseURL);
-        startReceivingMessages();
+        myFirebaseRef.createUser("bobtony@firebase.com", "correcthorsebatterystaple", new Firebase.ValueResultHandler<Map<String, Object>>() {
+                @Override
+                public void onSuccess(Map<String, Object> result) {
+                    System.out.println("Successfully created user account with uid: " + result.get("uid"));
+                }
+                @Override
+                public void onError(FirebaseError firebaseError) {
+                    // there was an error
+                }
+        });
+        myFirebaseRef.authWithPassword("bobtony@firebase.com", "correcthorsebatterystaple", new Firebase.AuthResultHandler() {
+            public void onAuthenticated(AuthData authData) {
+                System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
+            }
+            public void onAuthenticationError(FirebaseError firebaseError) {
+                // there was an error
+            }
+        });
     }
 
     //Method to update database with a new message entry
