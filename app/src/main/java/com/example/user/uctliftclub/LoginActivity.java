@@ -1,5 +1,12 @@
 package com.example.user.uctliftclub;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.app.Activity;
+import android.widget.EditText;
+
 import com.firebase.client.AuthData;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -9,81 +16,43 @@ import com.firebase.client.FirebaseError;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginActivity {
-    Firebase myFirebaseRef; //Link to Firebase online database - used as place to store user data
+public class LoginActivity extends Activity{
+    Firebase ref;
 
-    //Constructor to connect to database
-    LoginActivity(String firebaseURL){
-        myFirebaseRef = new Firebase(firebaseURL);
-        myFirebaseRef.createUser("bobtony@firebase.com", "correcthorsebatterystaple", new Firebase.ValueResultHandler<Map<String, Object>>() {
-                @Override
-                public void onSuccess(Map<String, Object> result) {
-                    System.out.println("Successfully created user account with uid: " + result.get("uid"));
-                }
-                @Override
-                public void onError(FirebaseError firebaseError) {
-                    // there was an error
-                }
-        });
-        myFirebaseRef.authWithPassword("bobtony@firebase.com", "correcthorsebatterystaple", new Firebase.AuthResultHandler() {
-            public void onAuthenticated(AuthData authData) {
-                System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
-            }
-            public void onAuthenticationError(FirebaseError firebaseError) {
-                // there was an error
-            }
-        });
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Firebase.setAndroidContext(this);
+        setContentView(R.layout.activity_login);
+        ref = new Firebase("https://uctliftclub.firebaseio.com/Messages");
+        attemptLogin();
     }
+        
+    public Button login;
 
-    //Method to update database with a new message entry
-    protected void sendMessage(String userName,String message){
-        //Map used so the message entry contains two bits of information
-        // - the user the sent the message and - the message itself
-        Map<String, String> post = new HashMap<String, String>();
-        post.put("User", userName); //The key is "User" and the value is the actual username
-        post.put("Message", message); //Key is "Message" and value is actual message
-
-        //Make new entry in database - set the value of the new entry to the hashmap object
-        myFirebaseRef.push().setValue(post);
-
-    }
-
-    //Method to add the neccessary event listeners to catch any new message entries on the database
-    protected void startReceivingMessages(){
-
-        //Add event listener on database
-        myFirebaseRef.addChildEventListener(new ChildEventListener() {
-
-            // Retrieve new posts as they are added to the database - NB!!!
+    public void attemptLogin() {
+        login = (Button) findViewById(R.id.button5);
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
-                Map<String, String> post = snapshot.getValue(Map.class); //Get the Map object that was written
-                System.out.println("Message is :" + post.get("Message"));
-                MainActivity.receiveMessage(post.get("User") + ">> " + post.get("Message"));
+            public void onClick(View v) {
+                EditText usr = (EditText) findViewById(R.id.editText2);
+                String username = (String) usr.getText().toString();
+                EditText pwd = (EditText) findViewById(R.id.editText3);
+                String pword = (String) usr.getText().toString();
+                ref.authWithPassword(username, pword, new Firebase.AuthResultHandler() {
+                    public void onAuthenticated(AuthData authData) {
+                        System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
+                        Intent loggingin = new Intent(LoginActivity.this, GiveOrGet.class);
+                        startActivity(loggingin);
+                    }
 
+                    public void onAuthenticationError(FirebaseError firebaseError) {
+                        System.out.println("SYSTEM BREACH! Successfully prevented");
+                        Intent loggingout = new Intent(LoginActivity.this, GiveOrGet.class);
+                        startActivity(loggingout);
+                }
+            });
             }
-
-            //METHODS NEEDED TO BE IMPLEMENTED FOR EVENT LISTENER - MUST BE ADDED TO
-
-            // Get the data on a post that has changed
-            @Override
-            public void onChildChanged(DataSnapshot snapshot, String previousChildKey) {
-            }
-
-            // Get the data on a post that has been removed
-            @Override
-            public void onChildRemoved(DataSnapshot snapshot) {
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-            }
-
         });
-
     }
 }

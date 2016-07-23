@@ -21,14 +21,16 @@
             android:layout_height="53dp"
             android:text="LOGIN"
             android:id="@+id/button"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:onClick="gotoLogin"/>/>
 
         <Button
             android:layout_width="132dp"
             android:layout_height="121dp"
             android:text="CREATE USER"
             android:id="@+id/button2"
-            android:layout_gravity="center_horizontal|bottom" />
+            android:layout_gravity="center_horizontal|bottom"
+            android:onClick="gotoCreateUser"/>
 
     </FrameLayout>
 
